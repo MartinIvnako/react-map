@@ -1,18 +1,28 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SearchNormal1 } from "iconsax-react";
-import Button from "./button/button.component";
 import FormInput from "./form-input/form-input.component";
+import { ShopContext } from "../context/shops.context";
+import { IShop } from "../utils/types/shops.types";
+import { isStringsMatch } from "../utils/help/isMatch";
 
 const Navigation = () => {
     const [searchText, setSearchText] = useState("");
-    const [shops, setShops] = useState([]);
+    const { shops } = useContext(ShopContext);
+    const [filteredShops, setFilteredShops] = useState([]);
 
     const handleSearchText = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setSearchText(value);
     };
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        /*   const result: IShop[] = shops.filter((shop) =>
+            isStringsMatch(shop.title, searchText)
+        );
+
+        setFilteredShops(result);
+        console.log("typeof result", typeof result); */
+    }, [searchText, shops]);
 
     return (
         <nav>
