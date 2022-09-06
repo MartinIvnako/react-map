@@ -16,12 +16,12 @@ const Navigation = () => {
     };
 
     useEffect(() => {
-        /*   const result: IShop[] = shops.filter((shop) =>
-            isStringsMatch(shop.title, searchText)
+        const result: IShop[] | [] = shops.filter((shop) =>
+            isStringsMatch(shop?.title, searchText)
         );
+        shops.filter((shop) => console.log("shopsshopsshops", shop));
 
         setFilteredShops(result);
-        console.log("typeof result", typeof result); */
     }, [searchText, shops]);
 
     return (

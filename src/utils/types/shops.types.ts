@@ -16,8 +16,8 @@ export interface IShopMediaImage {
     media_image: string;
 }
 
-export interface IShop {
-    title: string;
+export interface IShopInfo {
+    title?: string;
     body: string;
     nid: string;
     field_shop_category: string;
@@ -32,4 +32,7 @@ export interface IShop {
     field_opening_hours_export: IShopOpeningHours[];
     field_shop_category_export: IShopCategory[];
     field_shop_gallery_export: IShopMediaImage[];
+    [key: string]: any;
 }
+
+export type IShop = IShopInfo | {};
