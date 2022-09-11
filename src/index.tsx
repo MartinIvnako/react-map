@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { ShopProvider } from "./context/shops.context";
-import "./index.css";
+import "./assets/core/normalize.scss";
+import "./assets/core/index.css";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(

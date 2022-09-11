@@ -1,0 +1,52 @@
+.navigation {
+   max-width: 1800px;
+   width: 90vw;
+    margin: 0 auto;
+        display: grid;
+            grid-template-columns: auto minmax(280px, 300px);
+    background: blue;
+
+    &List {
+    display: flex;
+        align-items: center;
+    }
+    &Item {
+
+    }
+}
+.search {
+    position: relative;
+  &Button {
+    &Text {}
+    &Icon {}
+  }
+}
+
+.list {
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+.item {
+    display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 11px;
+}
+.image {
+        width: 60px;
+            height: 30px;
+            border: 1px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                    width: 100%;
+                        height: auto;
+            }
+}
+.info {}
+.title {}
+.position {}

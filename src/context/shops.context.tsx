@@ -1,14 +1,14 @@
 import { ReactNode, useState, createContext } from "react";
-import SHOPS from "../data/shops.data.json";
+import SHOP_LIST from '../data/shops.data.json';
 
 export const ShopContext = createContext({
-    shops: SHOPS,
+    shops: SHOP_LIST
 });
 
 export const ShopProvider: React.FC<{ children: ReactNode }> = ({
     children,
 }) => {
-    const [shops] = useState(SHOPS);
+    const [shops] = useState(SHOP_LIST);
 
     const value = { shops };
     return (

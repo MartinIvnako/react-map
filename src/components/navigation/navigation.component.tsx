@@ -1,11 +1,12 @@
 import NavigationSearch from "./navigation-search.component";
+import styles from "./navigation.module.scss"
 
 const Navigation = () => {
 
     return (
-        <nav>
-            <ul>
-                <li>Výps/mapa</li>
+        <nav className={styles.navigation}>
+            <ul className={styles.navigationList}>
+                <li className={styles.navigationItem}>Výps/mapa</li>
                 <li>Kategórie</li>
             </ul>
             <NavigationSearch/>

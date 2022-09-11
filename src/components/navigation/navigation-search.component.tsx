@@ -3,7 +3,8 @@ import { SearchNormal1 } from "iconsax-react";
 import FormInput from "../form-input/form-input.component";
 import { ShopContext } from "../../context/shops.context";
 import { isStringsMatch, isStringsMatchInArray } from "../../utils/help/isMatch";
-import { IShop, IShopInfo } from "../../utils/types/shops.types";
+import { IShop } from "../../utils/types/shops.types";
+import styles from "./navigation.module.scss"
 
 const NavigationSearch = () => {
     const [searchText, setSearchText] = useState("");
@@ -16,7 +17,7 @@ const NavigationSearch = () => {
     };
 
     useEffect(() => {
-         const result = shops.filter(({title, field_shop_tags_export}) =>
+        const result :IShop[] | [] | any = shops.filter(({ title, field_shop_tags_export }) =>
              isStringsMatch(title, searchText)
              || isStringsMatchInArray(field_shop_tags_export, searchText) 
         ); 
@@ -27,28 +28,28 @@ const NavigationSearch = () => {
     console.log("filteredShops", filteredShops)
 
     return (
-        <div className="">
+        <div className={styles.search}>
+            <div className={styles.searchButton}>
                 <FormInput
                     type="text"
                     placeholder="Hľadať podľa názvu obchodu..."
                     onChange={handleSearchText}
                     value={searchText}
                 />
-                {searchText}
-                <div>
-                    <SearchNormal1 size="32" color="#FF8A65" />
+               <span className={styles.searchButtonText}>{searchText}</span>
+                <SearchNormal1 size="32" color="#FF8A65" className={styles.searchButtonIcon} />
             </div>
-            <ul>
-                {filteredShops.length > 0 && filteredShops.map((shop) => (
-                    <li key={shop.title}>
-                        <div className="">
-                        <div className="">
-                            <img src={"https://www.galerie-butovice.cz/" + shop.field_shop_logo} alt="" />
-                        </div>
-                        <div className="">  
-                            <div className="" >{shop.title}</div>
-                            <div className="" >Floor: {shop.field_floor}</div>
-                        </div>
+            <ul className={styles.list}>
+                {filteredShops.map(({title,field_floor, field_shop_logo}) => (
+                    <li key={title}>
+                        <div className={styles.item}>
+                            <div className={styles.image}>
+                                <img src={"https://www.galerie-butovice.cz/" + field_shop_logo} alt="" />
+                            </div>
+                            <div className={styles.info}>  
+                                <div className={styles.title} >{title}</div>
+                                <div className={styles.position} >Floor: {field_floor}</div>
+                            </div>
                         </div>
 
                     </li>
