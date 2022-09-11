@@ -3,11 +3,12 @@ import { SearchNormal1 } from "iconsax-react";
 import FormInput from "./form-input/form-input.component";
 import { ShopContext } from "../context/shops.context";
 import { isStringsMatch } from "../utils/help/isMatch";
+import { IShop } from "../utils/types/shops.types";
 
 const Navigation = () => {
     const [searchText, setSearchText] = useState("");
     const { shops } = useContext(ShopContext);
-    const [filteredShops, setFilteredShops] = useState([{}]);
+    const [filteredShops, setFilteredShops] = useState<IShop[] | []>([]);
 
     const handleSearchText = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
@@ -15,11 +16,14 @@ const Navigation = () => {
     };
 
     useEffect(() => {
-        const result = shops.filter((shop) =>
-            isStringsMatch(shop.title, searchText)
-        );
+         const result = shops.filter((shop) =>
+           isStringsMatch(shop.title, searchText) 
+        ); 
         setFilteredShops(result);
-    }, [searchText, shops]);
+           
+    }, [searchText, shops]);    
+
+    console.log("filteredShops", filteredShops)
 
     return (
         <nav>
